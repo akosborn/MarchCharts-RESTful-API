@@ -1,0 +1,11 @@
+spring:
+  application:
+    name: netapi
+  datasource:
+    url: jdbc:mysql://localhost:3306/teamsheets?autoReconnect=true&useSSL=false
+    username: root
+    password: Osbo_789
+  jpa:
+    hibernate:
+      ddl-auto: none
+    Show-sql: false

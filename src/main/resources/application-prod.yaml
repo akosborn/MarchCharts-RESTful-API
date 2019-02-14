@@ -2,8 +2,8 @@ spring:
   application:
     name: netapi
   datasource:
-    url: jdbc:mysql://localhost/teamsheets?autoReconnect=true&useSSL=false
-    username: root
+    url: jdbc:mysql://localhost:3306/teamsheets?autoReconnect=true&useSSL=false
+    username: aosborn
     password: Osbo_789101112
   jpa:
     hibernate:
