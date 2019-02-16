@@ -27,8 +27,7 @@ public class MetricsController {
 
     @RequestMapping("/teams/{id}")
     public Team getByTeam(@PathVariable("id") Long teamId) {
-        Team team = teamService.findById(teamId).orElse(null);
-        return team;
+        return teamService.findById(teamId).orElse(null);
     }
 
     @RequestMapping("/conferences")
