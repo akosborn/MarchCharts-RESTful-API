@@ -1,6 +1,5 @@
 package com.osbornandrew;
 
-import com.osbornandrew.model.Metrics;
 import com.osbornandrew.model.Team;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;

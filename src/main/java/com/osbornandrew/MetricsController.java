@@ -1,13 +1,20 @@
 package com.osbornandrew;
 
+import com.osbornandrew.dto.MetricsDifference;
 import com.osbornandrew.model.Conference;
 import com.osbornandrew.model.Metrics;
 import com.osbornandrew.model.Team;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.time.LocalDate;
+import java.time.ZoneId;
+import java.time.format.DateTimeFormatter;
 import java.util.List;
 
 @RestController
@@ -27,8 +34,7 @@ public class MetricsController {
 
     @RequestMapping("/teams/{id}")
     public Team getByTeam(@PathVariable("id") Long teamId) {
-        Team team = teamService.findById(teamId).orElse(null);
-        return team;
+        return teamService.findById(teamId).orElse(null);
     }
 
     @RequestMapping("/conferences")
@@ -39,5 +45,14 @@ public class MetricsController {
     @RequestMapping("/conferences/{id}")
     public List<Team> getByConference(@PathVariable("id") Long id) {
         return teamService.getByConferenceId(id);
+    }
+
+    @RequestMapping("/metrics/movement")
+    public List<MetricsDifference> getChangeByDates(@RequestParam("from") String from,
+                                                    @RequestParam("to") String to) {
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-M-d");
+        LocalDate fromDate = LocalDate.parse(from, formatter);
+        LocalDate toDate = LocalDate.parse(to, formatter);
+        return metricsService.getChangeByDates(fromDate, toDate);
     }
 }
