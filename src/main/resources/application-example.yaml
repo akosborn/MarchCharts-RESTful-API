@@ -1,0 +1,11 @@
+spring:
+  application:
+    name: netapi
+  datasource:
+    url: jdbc:mysql://localhost:3306/db_name?autoReconnect=true&useSSL=false
+    username: username
+    password: pass
+  jpa:
+    hibernate:
+      ddl-auto: none
+    Show-sql: true
