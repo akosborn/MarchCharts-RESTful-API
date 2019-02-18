@@ -19,28 +19,22 @@ public interface MetricsRepository  extends CrudRepository<Metrics, Long> {
             "t.name AS teamName, " +
             "c.name AS conferenceName, " +
             "MAX(CASE WHEN m.date = ?2 THEN m.date END) as date2, " +
-            "m.date as date1, " +
-            "m.net," +
+            "MAX(CASE WHEN m.date != ?2 THEN m.date END) as date1, " +
             "MAX(CASE WHEN m.date = ?2 THEN net END) AS net2, " +
             "MAX(CASE WHEN m.date != ?2 THEN net END) AS net1, " +
             "(MAX(CASE WHEN m.date = ?2 THEN net END) - MAX(CASE WHEN m.date != ?2 THEN net END)) AS netChange, " +
-            "m.sos, " +
             "MAX(CASE WHEN m.date = ?2 THEN sos END) AS sos2, " +
             "MAX(CASE WHEN m.date != ?2 THEN sos END) AS sos1, " +
             "(MAX(CASE WHEN m.date = ?2 THEN sos END) - MAX(CASE WHEN m.date != ?2 THEN sos END)) AS sosChange, " +
-            "m.q1_wins AS q1Wins, " +
             "MAX(CASE WHEN m.date = ?2 THEN q1_wins END) AS q1Wins2, " +
             "MAX(CASE WHEN m.date != ?2 THEN q1_wins END) AS q1Wins1, " +
             "(MAX(CASE WHEN m.date = ?2 THEN q1_wins END) - MAX(CASE WHEN m.date != ?2 THEN q1_wins END)) AS q1WinsChange, " +
-            "m.q2_wins AS q2Wins, " +
             "MAX(CASE WHEN m.date = ?2 THEN q2_wins END) AS q2Wins2, " +
             "MAX(CASE WHEN m.date != ?2 THEN q2_wins END) AS q2Wins1, " +
             "(MAX(CASE WHEN m.date = ?2 THEN q2_wins END) - MAX(CASE WHEN m.date != ?2 THEN q2_wins END)) AS q2WinsChange, " +
-            "m.q3_losses AS q3Losses, " +
             "MAX(CASE WHEN m.date = ?2 THEN q3_losses END) AS q3Losses2, " +
             "MAX(CASE WHEN m.date != ?2 THEN q3_losses END) AS q3Losses1, " +
             "(MAX(CASE WHEN m.date = ?2 THEN q3_losses END) - MAX(CASE WHEN m.date != ?2 THEN q3_losses END)) AS Q3LossesChange, " +
-            "m.q4_losses AS q4Losses, " +
             "MAX(CASE WHEN m.date = ?2 THEN q4_losses END) AS q4Losses2, " +
             "MAX(CASE WHEN m.date != ?2 THEN q4_losses END) AS q4Losses1, " +
             "(MAX(CASE WHEN m.date = ?2 THEN q4_losses END) - MAX(CASE WHEN m.date != ?2 THEN q4_losses END)) AS q4LossesChange " +
