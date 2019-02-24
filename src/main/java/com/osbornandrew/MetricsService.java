@@ -25,4 +25,8 @@ public class MetricsService {
     public List<MetricsDifference> getChangeByDates(LocalDate from, LocalDate to) {
         return repo.findChangeByDates(from, to);
     }
+
+    public List<LocalDate> getAllDates() {
+        return repo.findAllDates();
+    }
 }
