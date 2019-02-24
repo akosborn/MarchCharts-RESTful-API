@@ -18,6 +18,7 @@ public interface MetricsRepository  extends CrudRepository<Metrics, Long> {
             "t.id AS teamId, " +
             "t.name AS teamName, " +
             "c.name AS conferenceName, " +
+            "CASE WHEN t.bubble = 1 THEN 'true' ELSE 'false' END AS onBubble, " +
             "MAX(CASE WHEN m.date = ?2 THEN m.date END) as date2, " +
             "MAX(CASE WHEN m.date != ?2 THEN m.date END) as date1, " +
             "MAX(CASE WHEN m.date = ?2 THEN net END) AS net2, " +
