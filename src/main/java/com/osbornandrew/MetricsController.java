@@ -55,4 +55,9 @@ public class MetricsController {
         LocalDate toDate = LocalDate.parse(to, formatter);
         return metricsService.getChangeByDates(fromDate, toDate);
     }
+
+    @RequestMapping("/metrics/dates")
+    public List<LocalDate> getAllDates() {
+        return metricsService.getAllDates();
+    }
 }

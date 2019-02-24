@@ -45,4 +45,10 @@ public interface MetricsRepository  extends CrudRepository<Metrics, Long> {
             "GROUP BY m.team_id " +
             "ORDER BY team_id", nativeQuery = true)
     List<MetricsDifference> findChangeByDates(LocalDate from, LocalDate to);
+
+    @Query(value = "" +
+            "SELECT DISTINCT date " +
+            "FROM Metrics " +
+            "ORDER BY date desc")
+    List<LocalDate> findAllDates();
 }
