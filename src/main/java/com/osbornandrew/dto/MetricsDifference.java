@@ -4,13 +4,14 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 
 import java.time.LocalDate;
 
-@JsonPropertyOrder({"teamId","teamName","conferenceName","date1","date2","net1","net2","netChange","sos1","sos2","sosChange",
+@JsonPropertyOrder({"teamId","teamName","conferenceName","onBubble","date1","date2","net1","net2","netChange","sos1","sos2","sosChange",
 "q1Wins1","q1Wins2","q1WinsChange","q2Wins1","q2Wins2","q2WinsChange","q3Losses1","q3Losses2","q3LossesChange",
 "q4Losses1","q4Losses2","q4LossesChange"})
 public interface MetricsDifference {
     Long getTeamId();
     String getTeamName();
     String getConferenceName();
+    boolean getOnBubble();
     LocalDate getDate1();
     LocalDate getDate2();
     int getNet1();
